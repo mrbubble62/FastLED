@@ -83,7 +83,7 @@ public:
 		uint8_t *end = data + len;
 		select();
 		while(data != end) { 
-#if defined(__MK20DX128__) 
+#if defined(__MK20DX128__) || defined(__MK20DX256__)
 			writeByte(D::adjust(*data++));
 #else
 			// a slight touch of delay here helps optimize the timing of the status register check loop (not used on ARM)

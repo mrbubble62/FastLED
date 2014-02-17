@@ -84,7 +84,7 @@ public:
 	}
 #endif
 
-#if defined(__MK20DX128__)
+#if defined(__MK20DX128__) || defined(__MK20DX256__)
 	inline static void write8Bits(register data_ptr_t port, register data_t hi, register data_t lo, register uint32_t & b)  __attribute__ ((always_inline)) {
 		// TODO: hand rig asm version of this method.  The timings are based on adjusting/studying GCC compiler ouptut.  This
 		// will bite me in the ass at some point, I know it.

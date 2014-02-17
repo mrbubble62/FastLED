@@ -36,7 +36,7 @@ template<int LOOP, int PAD> inline void _delaycycles_AVR() {
 }
 
 // usable definition
-#if !defined(__MK20DX128__)
+#if !(defined(__MK20DX128__) || defined(__MK20DX256__))
 template<int CYCLES> __attribute__((always_inline)) inline void delaycycles() { 
 	_delaycycles_AVR<CYCLES / 3, CYCLES % 3>();	
 }
@@ -76,7 +76,7 @@ template<> __attribute__((always_inline)) inline void delaycycles<5>() {NOP2;NOP
 //  Macro for making sure there's enough time available
 #define NO_TIME(A, B, C) (NS(A) < 3 || NS(B) < 3 || NS(C) < 6)
 
-#if defined(__MK20DX128__)
+#if defined(__MK20DX128__) || defined(__MK20DX256__)
    extern volatile uint32_t systick_millis_count;
 #  define MS_COUNTER systick_millis_count
 #else
